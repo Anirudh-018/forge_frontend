@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nft_forge/screens/account_page.dart';
+import 'package:nft_forge/screens/gallery.dart';
 import 'package:nft_forge/screens/wallet_page.dart';
 import 'package:nft_forge/screens/Instruction.dart';
 
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
     );
   },
   child: Image.asset(
-    'assets/images/NFThome.png',
+    'assets/images/logo.jpeg',
     height: 150,
     width: 200,
   ),
@@ -129,7 +130,12 @@ class HomeScreen extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    // Add your button 2 functionality here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Gallery(),
+                      ),
+                    );
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.only(

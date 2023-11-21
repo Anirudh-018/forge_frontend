@@ -6,6 +6,8 @@ import 'package:nft_forge/screens/Instruction.dart';
 import 'package:nft_forge/screens/wallet_page.dart';
 import 'package:nft_forge/screens/account_page.dart';
 
+import 'gen_display.dart';
+
 class Generate extends StatefulWidget {
   @override
   _GenerateState createState() => _GenerateState();
@@ -31,6 +33,7 @@ class _GenerateState extends State<Generate> {
     // Add functionality for generating image
     // You can use _textInputController.text for entered text
     // and _selectedImage for the selected image path
+    print(_selectedImage+" "+_textInputController.text);
   }
 
   @override
@@ -59,7 +62,7 @@ class _GenerateState extends State<Generate> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/images/NFThome.png'), // Replace with your image path
+                      'assets/images/logo.jpeg'), // Replace with your image path
                 ),
                 borderRadius: BorderRadius.circular(8.0),
                 color: Colors.transparent,
@@ -144,7 +147,7 @@ class _GenerateState extends State<Generate> {
                         fit: BoxFit.cover,
                       )
                     : Image.asset(
-                        'assets/images/nft.png', // Replace with your placeholder image path
+                        'assets/images/sketch-mountains-input.jpg', // Replace with your placeholder image path
                         width: 200,
                         height: 200,
                         fit: BoxFit.cover,
@@ -158,7 +161,7 @@ class _GenerateState extends State<Generate> {
             left: 40,
             right: 40,
             child: Container(
-              height: 50,
+              height: 70,
               child: Theme(
                 data: Theme.of(context).copyWith(
                   primaryColor:
@@ -184,7 +187,13 @@ class _GenerateState extends State<Generate> {
             child: Container(
               height: 50,
               child: ElevatedButton(
-                onPressed: _generateImage,
+                onPressed: () {
+                  // Navigate to the ImageListScreen page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GenerateDisp()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black, // Set button color to black
                   shape: RoundedRectangleBorder(
