@@ -15,7 +15,7 @@ class MyPasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: TextFormField(
+      child: TextField(
         style: kBodyText.copyWith(
           color: Colors.white,
         ),
@@ -29,8 +29,8 @@ class MyPasswordField extends StatelessWidget {
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onPressed: () {
-          onTap();
-        },
+                onTap();
+              },
               icon: Icon(
                 isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                 color: Colors.grey,

@@ -21,6 +21,10 @@ class MyTextField extends StatelessWidget {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(20),
+          
+          
+
+          
           hintText: hintText,
           hintStyle: kBodyText,
           enabledBorder: OutlineInputBorder(
