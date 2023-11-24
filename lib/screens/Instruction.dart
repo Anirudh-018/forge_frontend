@@ -32,7 +32,7 @@ class Instruction extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/images/NFThome.png'), // Replace with your image path
+                      'assets/images/logo.jpeg'), // Replace with your image path
                 ),
                 borderRadius: BorderRadius.circular(8.0),
                 color: Colors.transparent,
