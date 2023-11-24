@@ -68,13 +68,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/back_arrow.svg
-    - assets/images/FrontLogo.png
-    - assets/images/FORGE1.png
-    - assets/images/NFThome.png
-    - assets/images/nft.png
-    - assets/images/logo.jpeg
-    - assets/images/sketch-mountains-input.jpg
+    - assets/images/
+    # - assets/images/FrontLogo.png
+    # - assets/images/FORGE1.png
+    # - assets/images/NFThome.png
+    # - assets/images/nft.png
+    # - assets/images/logo.jpeg
+    # - assets/images/sketch-mountains-input.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

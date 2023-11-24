@@ -73,49 +73,104 @@ class _SignInPageState extends State<SignInPage> {
                               });
                             },
                           ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          MyTextButton(
+                            buttonName: 'Sign In',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) => HomeScreen(),
+                                ),
+                              );
+                            },
+                            bgColor: Colors.white,
+                            textColor: Colors.black87,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Or sign in with ",
+                                style: kBodyText,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              // Google Sign In
+                              IconButton(
+                                icon: Image(
+                                  width: 40,
+                                  image: AssetImage('assets/images/google.png'),
+                                ),
+                                onPressed: () {
+                                  // Handle Google Sign In
+                                },
+                              ),
+                              // Facebook Sign In
+                              IconButton(
+                                icon: Image(
+                                  width: 40,
+                                  image:
+                                      AssetImage('assets/images/facebook.png'),
+                                ),
+                                onPressed: () {
+                                  // Handle Facebook Sign In
+                                },
+                              ),
+                              // Twitter Sign In
+                              IconButton(
+                                icon: Image(
+                                  width: 40,
+                                  image:
+                                      AssetImage('assets/images/twitter.png'),
+                                ),
+                                onPressed: () {
+                                  // Handle Twitter Sign In
+                                },
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Dont't have an account? ",
+                                style: kBodyText,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => RegisterPage(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Register',
+                                  style: kBodyText.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ],
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Dont't have an account? ",
-                          style: kBodyText,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => RegisterPage(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'Register',
-                            style: kBodyText.copyWith(
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    MyTextButton(
-                      buttonName: 'Sign In',
-                      onTap: () {
-                        Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => HomeScreen(),
-                              ),
-                            );
-                      },
-                      bgColor: Colors.white,
-                      textColor: Colors.black87,
                     ),
                   ],
                 ),

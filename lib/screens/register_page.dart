@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:nft_forge/screens/signin_page.dart';
 import '../widgets/widget.dart';
 import '../constants.dart';
 import 'package:nft_forge/screens/homescreen.dart';
@@ -36,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
               hasScrollBody: false,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                  horizontal: 10,
                 ),
                 child: Column(
                   children: [
@@ -53,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: kBodyText2,
                           ),
                           SizedBox(
-                            height: 50,
+                            height: 20,
                           ),
                           MyTextField(
                             hintText: 'Name',
@@ -63,10 +64,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             hintText: 'Email',
                             inputType: TextInputType.emailAddress,
                           ),
-                          MyTextField(
-                            hintText: 'Phone',
-                            inputType: TextInputType.phone,
-                          ),
                           MyPasswordField(
                             isPasswordVisible: passwordVisibility,
                             onTap: () {
@@ -74,40 +71,102 @@ class _RegisterPageState extends State<RegisterPage> {
                                 passwordVisibility = !passwordVisibility;
                               });
                             },
-                          )
+                          ),
+                          MyTextButton(
+                            buttonName: 'Register',
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) => HomeScreen(),
+                                ),
+                              );
+                            },
+                            bgColor: Colors.white,
+                            textColor: Colors.black87,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Or register with ",
+                                style: kBodyText,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              // Google Sign In
+                              IconButton(
+                                icon: Image(
+                                  width: 30,
+                                  image: AssetImage('assets/images/google.png'),
+                                ),
+                                onPressed: () {
+                                  // Handle Google Sign In
+                                },
+                              ),
+                              // Facebook Sign In
+                              IconButton(
+                                icon: Image(
+                                  width: 30,
+                                  image:
+                                      AssetImage('assets/images/facebook.png'),
+                                ),
+                                onPressed: () {
+                                  // Handle Facebook Sign In
+                                },
+                              ),
+                              // Twitter Sign In
+                              IconButton(
+                                icon: Image(
+                                  width: 30,
+                                  image:
+                                      AssetImage('assets/images/twitter.png'),
+                                ),
+                                onPressed: () {
+                                  // Handle Twitter Sign In
+                                },
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Already have account?",
+                                style: kBodyText,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => SignInPage(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Sign in',
+                                  style: kBodyText.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ],
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Already have an account? ",
-                          style: kBodyText,
-                        ),
-                        Text(
-                          "Sign In",
-                          style: kBodyText.copyWith(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    MyTextButton(
-                      buttonName: 'Register',
-                      onTap: () {
-                        Navigator.push(
-                              context,
-                              CupertinoPageRoute(
-                                builder: (context) => HomeScreen(),
-                              ),
-                            );
-                      },
-                      bgColor: Colors.white,
-                      textColor: Colors.black87,
                     )
                   ],
                 ),
