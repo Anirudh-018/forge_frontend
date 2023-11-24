@@ -100,8 +100,8 @@ class Instruction extends StatelessWidget {
           ),
           // Title 'Instructions' with Poppins font and italic style
           Positioned(
-            top: 120,
-            left: 50,
+            top: 140,
+            left: 90,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -120,7 +120,7 @@ class Instruction extends StatelessWidget {
           ),
           // Instructions paragraph
           Positioned(
-            top: 170, // Adjusted top position to accommodate the line space
+            top: 210, // Adjusted top position to accommodate the line space
             left:
                 20, // Adjusted left position to move the paragraph to the left
             child: Container(
@@ -182,7 +182,7 @@ class Instruction extends StatelessWidget {
           ),
           // Button 'Proceed'
           Positioned(
-            bottom: 20,
+            bottom: 160,
             left: 40,
             right: 40,
             child: Container(

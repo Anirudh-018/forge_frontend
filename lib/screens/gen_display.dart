@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -21,8 +22,29 @@ class _GenerateDispState extends State<GenerateDisp> {
     setState(() {
       isLoading = true;
     });
+    List<NetworkInterface> interfaces = await NetworkInterface.list(
+      includeLoopback: false, // Exclude loopback interfaces
+      type: InternetAddressType.IPv4, // Filter for IPv4 addresses
+    );
 
-    final apiUrl = 'http://10.1.2.222:3000/generate/getAll/ani'; // Replace with your API endpoint
+    // Find the first non-loopback IPv4 address
+    String? ipv4Address;
+    for (var interface in interfaces) {
+      if (!interface.name.contains('loopback')) {
+        for (var addr in interface.addresses) {
+          if (addr.type == InternetAddressType.IPv4) {
+            ipv4Address = addr.address;
+            break;
+          }
+        }
+      }
+      if (ipv4Address != null) {
+        break;
+      }
+    }
+
+    print('IPv4 Address: $ipv4Address');
+    final apiUrl = 'http://${ipv4Address}/generate/getAll/ani'; // Replace with your API endpoint
 
     try {
       final response = await http.get(Uri.parse(apiUrl));
@@ -51,7 +73,29 @@ class _GenerateDispState extends State<GenerateDisp> {
     Uri uri = Uri.parse(imageUrl);
     String filename = uri.pathSegments.last.split('/').last;
     print('Filename: $filename');
-    final apiUrl = 'http://10.1.2.222:3000/generate/addToGallery?username=ani&fileName=${filename}'; // Replace with your API endpoint
+    List<NetworkInterface> interfaces = await NetworkInterface.list(
+      includeLoopback: false, // Exclude loopback interfaces
+      type: InternetAddressType.IPv4, // Filter for IPv4 addresses
+    );
+
+    // Find the first non-loopback IPv4 address
+    String? ipv4Address;
+    for (var interface in interfaces) {
+      if (!interface.name.contains('loopback')) {
+        for (var addr in interface.addresses) {
+          if (addr.type == InternetAddressType.IPv4) {
+            ipv4Address = addr.address;
+            break;
+          }
+        }
+      }
+      if (ipv4Address != null) {
+        break;
+      }
+    }
+
+    print('IPv4 Address: $ipv4Address');
+    final apiUrl = 'http://${ipv4Address}/generate/addToGallery?username=ani&fileName=${filename}'; // Replace with your API endpoint
     try {
       final response = await http.post(
         Uri.parse(apiUrl),

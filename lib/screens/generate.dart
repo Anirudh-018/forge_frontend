@@ -20,7 +20,7 @@ class _GenerateState extends State<Generate> {
   Future<void> _getImage() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? pickedFile =
-        await _picker.pickImage(source: ImageSource.gallery);
+    await _picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(() {
@@ -33,7 +33,7 @@ class _GenerateState extends State<Generate> {
     // Add functionality for generating image
     // You can use _textInputController.text for entered text
     // and _selectedImage for the selected image path
-    print(_selectedImage+" "+_textInputController.text);
+    print(_selectedImage + " " + _textInputController.text);
   }
 
   @override
@@ -128,12 +128,27 @@ class _GenerateState extends State<Generate> {
               ),
             ),
           ),
+          Positioned(
+            top: 138.0,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                'Generate',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
           // Image Upload Box with Placeholder
           Center(
             child: InkWell(
               onTap: _getImage,
               child: Container(
-                width: 200,
+                width: 320,
                 height: 200,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 2),
@@ -141,23 +156,24 @@ class _GenerateState extends State<Generate> {
                 ),
                 child: _selectedImage != null
                     ? Image.file(
-                        _selectedImage,
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      )
+                  _selectedImage,
+                  width: 320,
+                  height: 200,
+                  fit: BoxFit.cover,
+                )
                     : Image.asset(
-                        'assets/images/sketch-mountains-input.jpg', // Replace with your placeholder image path
-                        width: 200,
-                        height: 200,
-                        fit: BoxFit.cover,
-                      ),
+                  'assets/images/sketch-mountains-input.jpg',
+                  // Replace with your placeholder image path
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
           // Input Box
           Positioned(
-            bottom: 140,
+            bottom: 200,
             left: 40,
             right: 40,
             child: Container(
@@ -165,7 +181,7 @@ class _GenerateState extends State<Generate> {
               child: Theme(
                 data: Theme.of(context).copyWith(
                   primaryColor:
-                      Colors.grey, // Set the text field border color to grey
+                  Colors.grey, // Set the text field border color to grey
                 ),
                 child: TextField(
                   controller: _textInputController,
@@ -181,7 +197,7 @@ class _GenerateState extends State<Generate> {
           ),
           // Generate Button
           Positioned(
-            bottom: 80,
+            bottom: 100,
             left: 80,
             right: 80,
             child: Container(

@@ -22,7 +22,7 @@ class _GalleryState extends State<Gallery> {
       isLoading = true;
     });
 
-    final apiUrl = 'http://10.1.2.222:3000/generate/getAllGallery/ani'; // Replace with your API endpoint
+    final apiUrl = 'http://10.100.5.63:3000/generate/getAllGallery/ani'; // Replace with your API endpoint
 
     try {
       final response = await http.get(Uri.parse(apiUrl));
@@ -43,6 +43,7 @@ class _GalleryState extends State<Gallery> {
       });
     }
   }
+
   void _showMintingDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -80,113 +81,6 @@ class _GalleryState extends State<Gallery> {
     print('Mint button tapped for main grid item $mainGridIndex');
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     backgroundColor: Colors.white,
-  //     body: Stack(
-  //       children: [
-  //         Row(
-  //           children: [
-  //             Padding(
-  //               padding: const EdgeInsets.only(left: 8.0),
-  //               child: Row(
-  //                 children: [
-  //                   GestureDetector(
-  //                     onTap: () {
-  //                       Navigator.push(
-  //                         context,
-  //                         MaterialPageRoute(
-  //                           builder: (context) => HomeScreen(),
-  //                         ),
-  //                       );
-  //                     },
-  //                     child: Image.asset(
-  //                       'assets/images/logo.jpeg',
-  //                       height: 150,
-  //                       width: 200,
-  //                     ),
-  //                   ),
-  //                   const SizedBox(width: 120),
-  //                   GestureDetector(
-  //                     onTap: () {
-  //                       Navigator.push(
-  //                         context,
-  //                         MaterialPageRoute(
-  //                           builder: (context) => WalletPage(),
-  //                         ),
-  //                       );
-  //                     },
-  //                     child: Icon(
-  //                       MdiIcons.wallet,
-  //                       color: Colors.black,
-  //                     ),
-  //                   ),
-  //                   const SizedBox(width: 10),
-  //                   GestureDetector(
-  //                     onTap: () {
-  //                       Navigator.push(
-  //                         context,
-  //                         MaterialPageRoute(
-  //                           builder: (context) => AccountPage(),
-  //                         ),
-  //                       );
-  //                     },
-  //                     child: Icon(
-  //                       MdiIcons.account,
-  //                       color: Colors.black,
-  //                     ),
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           ],
-  //         ),
-  //         // Your other positioned widgets here
-  //         Positioned(
-  //           top: 120.0,
-  //           left: 10.0,
-  //           right: 10.0,
-  //           bottom: 10.0,
-  //           child: isLoading
-  //               ? Center(child: CircularProgressIndicator())
-  //               : GridView.builder(
-  //             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //               crossAxisCount: 2,
-  //               crossAxisSpacing: 10.0,
-  //               mainAxisSpacing: 10.0,
-  //             ),
-  //             itemCount: imageUrls.length,
-  //             itemBuilder: (context, index) {
-  //               return Column(
-  //                 crossAxisAlignment: CrossAxisAlignment.stretch,
-  //                 children: [
-  //                   Expanded(
-  //                     child: Container(
-  //                       decoration: BoxDecoration(
-  //                         image: DecorationImage(
-  //                           image: NetworkImage(imageUrls[index]),
-  //                           fit: BoxFit.cover,
-  //                         ),
-  //                         borderRadius: BorderRadius.circular(8.0),
-  //                       ),
-  //                     ),
-  //                   ),
-  //                   ElevatedButton(
-  //                     onPressed: () {
-  //                       _showMintingDialog(context); // Show the add to gallery dialog
-  //                     },
-  //                     child: Text('Mint'),
-  //                   ),
-  //                 ],
-  //               );
-  //             },
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -246,6 +140,33 @@ class _GalleryState extends State<Gallery> {
                       ),
                     ),
                   ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                ),
+                SizedBox(width: 140),
+                Text(
+                  'Gallery',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),
