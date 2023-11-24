@@ -62,10 +62,10 @@ class _SignInPageState extends State<SignInPage> {
                             height: 60,
                           ),
                           MyTextField(
-                            hintText: 'Phone, email or username',
+                            hintText: 'Username',
                             inputType: TextInputType.text,
                           ),
-                          MyPasswordField(
+                          MyPasswordField (
                             isPasswordVisible: isPasswordVisible,
                             onTap: () {
                               setState(() {
