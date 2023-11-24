@@ -42,7 +42,7 @@ class _GenerateState extends State<Generate> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Image on the top left
+          // Widgets outside the scrolling section
           Positioned(
             top: 13.0,
             left: 10.0,
@@ -69,7 +69,6 @@ class _GenerateState extends State<Generate> {
               ),
             ),
           ),
-          // Wallet icon
           Positioned(
             top: 50,
             right: 60,
@@ -89,7 +88,6 @@ class _GenerateState extends State<Generate> {
               ),
             ),
           ),
-          // Profile icon
           Positioned(
             top: 50,
             right: 20,
@@ -143,86 +141,81 @@ class _GenerateState extends State<Generate> {
               ),
             ),
           ),
-          // Image Upload Box with Placeholder
-          Center(
-            child: InkWell(
-              onTap: _getImage,
-              child: Container(
-                width: 320,
-                height: 200,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 2),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: _selectedImage != null
-                    ? Image.file(
-                  _selectedImage,
-                  width: 320,
-                  height: 200,
-                  fit: BoxFit.cover,
-                )
-                    : Image.asset(
-                  'assets/images/sketch-mountains-input.jpg',
-                  // Replace with your placeholder image path
-                  width: 200,
-                  height: 200,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          // Input Box
+
+          // Scrolling section containing ImagePicker, Input, and Generate button
           Positioned(
-            bottom: 200,
-            left: 40,
-            right: 40,
-            child: Container(
-              height: 70,
-              child: Theme(
-                data: Theme.of(context).copyWith(
-                  primaryColor:
-                  Colors.grey, // Set the text field border color to grey
-                ),
-                child: TextField(
-                  controller: _textInputController,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
+            top: 320,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: _getImage,
+                    child: Container(
+                      width: 320,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey, width: 2),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: _selectedImage != null
+                          ? Image.file(
+                        _selectedImage,
+                        width: 320,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      )
+                          : Image.asset(
+                        'assets/images/sketch-mountains-input.jpg',
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    labelText: 'Enter your prompt here',
                   ),
-                ),
-              ),
-            ),
-          ),
-          // Generate Button
-          Positioned(
-            bottom: 100,
-            left: 80,
-            right: 80,
-            child: Container(
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Navigate to the ImageListScreen page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => GenerateDisp()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.black, // Set button color to black
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                  Container(
+                    height: 70,
+                    margin: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                    child: TextField(
+                      controller: _textInputController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        labelText: 'Enter your prompt here',
+                      ),
+                    ),
                   ),
-                ),
-                child: Text(
-                  'Generate',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                  Container(
+                    height: 50,
+                    margin: EdgeInsets.symmetric(horizontal: 80),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GenerateDisp(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                      child: Text(
+                        'Generate',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
